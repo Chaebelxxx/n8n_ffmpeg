@@ -11,3 +11,6 @@ COPY --from=ffmpeg-downloader /tmp/ffmpeg/ffprobe /usr/local/bin/ffprobe
 COPY --from=ffmpeg-downloader /usr/share/fonts /usr/share/fonts
 RUN chmod +x /usr/local/bin/ffmpeg /usr/local/bin/ffprobe
 USER node
+
+RUN apk add --no-cache ffmpeg \
+ && ffmpeg -filters | grep drawtext
